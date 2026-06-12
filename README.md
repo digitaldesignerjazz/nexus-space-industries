@@ -57,16 +57,45 @@ We adapt and extend these technologies for the unique constraints and opportunit
 
 This repository serves as the central hub and foundation documentation for the project.
 
-- **Vision & Roadmap**: See this README and future `docs/` and `roadmap.md`.
+- **Vision & Roadmap**: See this README, `ROADMAP.md`, and `FOCUS_AREAS.md`.
 - **Technical Prototypes**: Will be developed in dedicated repositories under the Nexus Space Industries organization or linked here.
 - **Contribution**: Open to researchers, engineers, and visionaries aligned with decentralized, open, and resilient space development.
+
+## Development & Testing
+
+### GitHub Actions CI
+
+This repository uses GitHub Actions for continuous integration:
+
+- **CI workflow** (`ci.yml`): Runs Markdown linting and link checking on every push and pull request.
+- **Link Checker** (`link-check.yml`): Scheduled weekly link validation + manual trigger.
+
+You can view the workflows in the [`.github/workflows/`](.github/workflows/) directory.
+
+### Installing Development Dependencies
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+This installs `hypothesis` (for property-based testing in related projects) and `pre-commit`.
+
+### Setting Up Pre-commit Hooks
+
+```bash
+pre-commit install
+```
+
+### Running Tests
+
+Currently focused on documentation quality. Future code contributions will have expanded test coverage.
 
 ## Current Status
 
 **Phase 0 — Foundation Establishment** (Current)
 - Repository and initial vision created.
 - Alignment with terrestrial Nexus technologies.
-- Community and contributor onboarding beginning.
+- Contribution infrastructure and CI established.
 
 Future phases will include specific technology prototypes, simulation environments, and partnership explorations.
 
