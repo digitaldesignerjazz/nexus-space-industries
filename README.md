@@ -69,7 +69,10 @@ This repository uses GitHub Actions for continuous integration:
 
 - **CI workflow** (`ci.yml`): Runs Markdown linting and link checking on every push and pull request.
 - **Link Checker** (`link-check.yml`): Scheduled weekly link validation + manual trigger.
-- **Python CI** (`python-ci.yml`): Runs on changes to `python/` or `requirements-dev.txt`. Tests across Python 3.10–3.12, runs pre-commit, pytest, and Hypothesis property-based tests.
+- **Python CI** (`python-ci.yml`): Runs on changes to `python/` or `requirements-dev.txt`. Includes:
+  - pre-commit hooks
+  - mypy type checking (across Python 3.10–3.12)
+  - pytest + Hypothesis property-based tests
 
 You can view all workflows in the [`.github/workflows/`](.github/workflows/) directory.
 
@@ -79,7 +82,7 @@ You can view all workflows in the [`.github/workflows/`](.github/workflows/) dir
 pip install -r requirements-dev.txt
 ```
 
-This installs `hypothesis` (for property-based testing) and `pre-commit`.
+This installs `hypothesis`, `mypy`, and `pre-commit`.
 
 ### Setting Up Pre-commit Hooks
 
@@ -92,6 +95,9 @@ pre-commit install
 ```bash
 # Run all tests
 pytest python/ -v
+
+# Run mypy type checking
+mypy python/ --ignore-missing-imports
 
 # Run only property-based tests
 pytest python/tests/ -v -k "property"
