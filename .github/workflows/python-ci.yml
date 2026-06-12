@@ -40,6 +40,11 @@ jobs:
       - name: Run pre-commit hooks
         uses: pre-commit/action@v3.0.1
 
+      - name: Run mypy type checking
+        run: |
+          mypy python/ --ignore-missing-imports --show-error-codes
+        continue-on-error: true  # Will be made strict once more code is typed
+
       - name: Run tests with pytest
         run: |
           pytest python/ -v --tb=short
@@ -47,4 +52,4 @@ jobs:
       - name: Run property-based tests (Hypothesis)
         run: |
           pytest python/tests/ -v -k "property" --tb=short || true
-        continue-on-error: true  # Property tests are supplementary
+        continue-on-error: true
